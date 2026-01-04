@@ -13,6 +13,7 @@ def solution(s):
     }
     for key, value in table.items():
         s = s.replace(key, value)
+        
     return int(s)
     
         
