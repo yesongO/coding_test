@@ -10,3 +10,4 @@ def solution(X, Y):
     if result[0] == '0': return '0'
     
     return result
+
