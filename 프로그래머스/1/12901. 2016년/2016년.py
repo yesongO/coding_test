@@ -9,3 +9,4 @@ def solution(a, b):
     
     return week_day_lst[day_sum % 7]
 
+
