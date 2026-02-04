@@ -1,12 +1,11 @@
 def solution(name, yearning, photo):
-    yearning_dic = dict(zip(name, yearning))
-    result = []
-    for p in photo:
-        score = 0
-        for name in p:
-            if name in yearning_dic:
-                score += yearning_dic[name]
-        result.append(score)
+    yearning_dict = dict(zip(name, yearning))
+    result = [0] * len(photo)
+    
+    for idx, lst in enumerate(photo):
+        for name in lst:
+            result[idx] += yearning_dict.get(name, 0)
+            
     return result
             
             
