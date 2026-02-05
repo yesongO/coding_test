@@ -1,12 +1,22 @@
-def solution(n, m, section): 
-    is_painting = [True] * n
-    result = 0
+from collections import deque
+
+def solution(n, m, section):
+    init_lst = [1] * n
     for i in section:
-        is_painting[i-1] = False
-        
-    for j in range(len(is_painting)): 
-        if is_painting[j] == False:
-            is_painting[j:j+m] = [True] * m
+        init_lst[i-1] = 0
+    
+    drawing_queue = deque(init_lst)
+    result = 0
+    
+    while drawing_queue:
+        if drawing_queue[0] == 1:
+            drawing_queue.popleft()
+        else:
             result += 1
+            for _ in range(m):
+                if drawing_queue: drawing_queue.popleft()
+                else: break
             
     return result
+
+
