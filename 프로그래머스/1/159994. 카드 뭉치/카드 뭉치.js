@@ -1,13 +1,13 @@
-function solution(cards1, cards2, goal) {
-    for (let i=0; i<goal.length; i++) {
-        let s = goal[i];
-        if (cards1 && cards1[0] === s) {
+const solution = (cards1, cards2, goal) => {
+    let check_num = 0;
+    goal.forEach((str) => {
+        if (cards1 && cards1[0] === str) {
             cards1.shift();
-        } else if (cards2 && cards2[0] === s) {
+            check_num ++;
+        } else if (cards2 && cards2[0] === str) {
             cards2.shift();
-        } else {
-            return "No";
+            check_num ++;
         }
-    }
-    return "Yes";
+    });
+    return check_num === goal.length ? "Yes" : "No";
 }
