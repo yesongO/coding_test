@@ -1,22 +1,23 @@
 def solution(keymap, targets):
     key_dict = {}
-    for one_map in keymap: 
-        for idx, val in enumerate(one_map):
-            if val not in key_dict.keys():
-                key_dict[val] = idx + 1
+    for key in keymap:
+        for idx, str in enumerate(key):
+            if str not in key_dict:
+                key_dict[str] = idx+1
             else:
-                key_dict[val] = min(key_dict[val], idx + 1)
+                cur_val = key_dict[str]
+                key_dict[str] = min(idx+1, cur_val)
                 
-    result = []         
-    
-    for target_string in targets: 
-        cur_result = 0
-        for alphabet in target_string: 
-            if alphabet not in key_dict:
-                result.append(-1)
+    result = []
+    for target in targets:
+        target_sum = 0
+        for s in target:
+            if s not in key_dict: 
+                result.append(-1) 
                 break
-            cur_result += key_dict[alphabet]
-        else: result.append(cur_result)  
-        
+            target_sum += key_dict[s]
+        else:
+            result.append(target_sum)
+            
     return result
             
