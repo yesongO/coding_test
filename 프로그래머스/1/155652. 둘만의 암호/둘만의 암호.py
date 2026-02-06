@@ -1,17 +1,19 @@
 def solution(s, skip, index):
-    all_alphabet = 'abcdefghijklmnopqrstuvwxyz'
-    for a in skip:
-        all_alphabet = all_alphabet.replace(a, "")
+    alphabet_str = 'abcdefghijklmnopqrstuvwxyz';
+    alphabet_lst = list(alphabet_str)
+    for i in skip:
+        alphabet_lst.remove(i)
         
-    result = ''
-    for alphabet in s:
-        cur_idx = all_alphabet.index(alphabet)
-        new_idx = cur_idx + index
-        if new_idx > len(all_alphabet)-1:
-            new_idx = new_idx % len(all_alphabet)
-        result += all_alphabet[new_idx]
-    return result
-        
-            
-        
+    cur_alphabet_length = len(alphabet_lst) 
     
+    result = ''
+    
+    for alphabet in s:
+        cur_idx = alphabet_lst.index(alphabet) + index
+        if cur_idx < cur_alphabet_length:
+            result += alphabet_lst[cur_idx]
+        else:
+            cur_idx = cur_idx % cur_alphabet_length
+            result += alphabet_lst[cur_idx]
+    return result
+
