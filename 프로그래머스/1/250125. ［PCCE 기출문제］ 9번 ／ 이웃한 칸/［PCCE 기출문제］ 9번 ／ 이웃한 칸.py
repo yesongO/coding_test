@@ -1,20 +1,15 @@
 def solution(board, h, w):
-    n = len(board)
-    count = 0
-    dh = [0, 1, -1, 0]
-    dw = [1, 0, 0, -1]
-    color = board[h][w]
+    board_len = len(board)
+    result = 0
     
-    for i in range(4): 
-        
-        # 범위를 벗어날 경우
-        if (h + dh[i] < 0 or h + dh[i] > n - 1 or w + dw[i] < 0 or w + dw[i] > n - 1):
-            continue
+    dh = [1, 0, -1, 0]
+    dw = [0, 1, 0, -1]
+    
+    for i in range(4):
+        cur_color = board[h][w]
+        h_check, w_check = h + dh[i], w + dw[i]
+        if (0 <= h_check < board_len and 0 <= w_check < board_len):
+            if board[h_check][w_check] == cur_color:
+                result += 1
                 
-        if board[h+dh[i]][w+dw[i]] == color:
-            count += 1
-            
-    return count
-
-
-
+    return result
