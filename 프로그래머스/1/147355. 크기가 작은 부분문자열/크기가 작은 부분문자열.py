@@ -1,8 +1,12 @@
 def solution(t, p):
-    com_len = len(t) - len(p) + 1
-    com_lst = []
-    for i in range(com_len):
-        com_lst.append(int(t[i:i+len(p)]))
-    com_lst = [j for j in com_lst if j <= int(p)]
-    return len(com_lst)
-        
+    len_p = len(p)
+    split_num_lst = []
+    result = 0
+    
+    for i in range(len(t) - len_p + 1):
+        split_num_lst.append(int(t[i:i+len_p]))
+    
+    for num in split_num_lst:
+        if num <= int(p): result += 1
+    
+    return result
