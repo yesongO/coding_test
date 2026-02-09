@@ -1,18 +1,14 @@
-function solution(s) {
-    let result = [];
-    for (let i=0; i<s.length; i++) { 
-        let cur_str = s[i];
-        let found = false;
-        for (let j=i-1; j>-1; j--) { 
-            if (s[j] === cur_str) {
-                result.push(i-j);
-                found = true;
-                break;
-            }
-        }
-        if (!found) {
+const solution = (s) => {
+    const result = [];
+    const my_dict = {};
+    
+    s.split('').forEach((str, idx) => {
+        if (my_dict[str] === undefined) {
             result.push(-1);
+        } else {
+            result.push(idx - my_dict[str]);
         }
-    }
+        my_dict[str] = idx;
+    });
     return result;
 }
