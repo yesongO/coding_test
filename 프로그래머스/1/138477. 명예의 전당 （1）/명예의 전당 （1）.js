@@ -1,13 +1,13 @@
-function solution(k, score) {
-    let result = [];
-    let acc = [];
-    for (let i=0; i<score.length; i++) {
-        acc.push(score[i]);
-        if (i < k) {
-            result.push(Math.min(...acc));
-        } else {
-            result.push([...acc].sort((a, b) => b - a)[k-1]);
+const solution = (k, score) => {
+    const result = [];
+    const cur_score = [];
+    score.forEach((i, idx) => {
+        cur_score.push(i);
+        if (idx < k) { result.push(Math.min(...cur_score)) }
+        else {
+            cur_score.sort((a, b) => b - a);
+            result.push(cur_score[k-1]);
         }
-    }
+    });
     return result;
 }
