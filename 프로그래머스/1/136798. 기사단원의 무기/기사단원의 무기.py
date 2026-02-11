@@ -1,20 +1,22 @@
 from collections import deque
 
 def solution(number, limit, power):
-    divisor_count_lst = [0] * (number+1)
+    divisor_lst = [0] * (number + 1)
     
     for i in range(1, number+1):
         for j in range(i, number+1, i):
-            divisor_count_lst[j] += 1
-    
-    divisor_count_deque = deque(divisor_count_lst)
+            divisor_lst[j] += 1
+                    
+    my_queue = deque(divisor_lst)
     result = 0
-    while divisor_count_deque:
-        a = divisor_count_deque.popleft()
-        if a <= limit:
-            result += a
-        else:
+    
+    while my_queue:
+        cur_divisor = my_queue.popleft()
+        if cur_divisor > limit:
             result += power
+        else:
+            result += cur_divisor
     
     return result
+            
         
