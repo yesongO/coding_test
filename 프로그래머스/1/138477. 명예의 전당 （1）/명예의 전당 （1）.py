@@ -1,14 +1,12 @@
 def solution(k, score):
-    result = []
-    acc = []
-    for i in range(len(score)): 
-        acc.append(score[i])
-        if len(acc) < k:
-            result.append(min(acc))
-        else:
-            result.append(sorted(acc, reverse=True)[k-1])
-    return result
-            
-        
-        
+    lowest_honer_score = [] 
+    cur_score_lst = [] 
     
+    for i in range(len(score)):
+        cur_score_lst.append(score[i])
+        if i < k:
+            lowest_honer_score.append(min(cur_score_lst))
+        else:
+            lowest_honer_score.append(sorted(cur_score_lst, reverse=True)[k-1])
+            
+    return lowest_honer_score
