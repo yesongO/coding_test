@@ -1,8 +1,11 @@
 def solution(food):
-    one_side = ""
+    half_result = ''
     for i in range(1, len(food)):
-        one_side += str(i) * (food[i] // 2)
-    return one_side + "0" + one_side[::-1]
-            
+        count = food[i] // 2
+        for j in range(count):
+            half_result += str(i)
+        
+    return half_result + '0' + half_result[::-1]
+        
         
         
