@@ -1,7 +1,9 @@
-function solution(food) {
-    let one_side = "";
-    for(let i=1; i<food.length; i++) {
-        one_side += String(i).repeat(Math.floor(food[i] / 2));
-    }
-    return one_side + "0" + one_side.split("").reverse().join("");
+const solution = (food) => {
+    let half_result = '';
+    food.forEach((i, idx) => {
+        if (idx !== 0) {
+            half_result += String(idx).repeat(Math.floor(i / 2));
+        }
+    });
+    return half_result + '0' + half_result.split('').reverse().join('');
 }
