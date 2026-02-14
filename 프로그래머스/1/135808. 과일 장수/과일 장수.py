@@ -1,14 +1,15 @@
 from collections import deque
 
 def solution(k, m, score):
-    apple_sorted_queue = deque(sorted(score, reverse=True))
-    result = 0
+    answer_lst = []
+    score_queue = deque(sorted(score, reverse=True))
     
-    while len(apple_sorted_queue) >= m:
-        for i in range(m):
-            apple_arr = []
-            apple_arr.append(apple_sorted_queue.popleft())
-        min_val = min(apple_arr)
-        result += min_val * m
-            
-    return result
+    while len(score_queue) >= m:
+        cur_lst = []
+        for i in range(m): 
+            cur_lst.append(score_queue.popleft())
+        answer_lst.append(min(cur_lst) * m)
+    
+    return sum(answer_lst)
+    
+        
