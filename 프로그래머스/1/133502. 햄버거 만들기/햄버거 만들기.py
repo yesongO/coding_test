@@ -1,14 +1,14 @@
 def solution(ingredient):
-    ham_stack = [] 
+    my_stack = [] 
     result = 0
     
-    for val in ingredient:
-        ham_stack.append(val)
-        if len(ham_stack) < 4: continue
-        if val == 1 and ham_stack[-4:-1] == [1, 2, 3]:
-            for i in range(4):
-                ham_stack.pop()
+    for i in ingredient:
+        my_stack.append(i)     
+        if len(my_stack) < 4: continue
+        if i == 1 and my_stack[-4:] == [1, 2, 3, 1]:
+            for j in range(4):
+                my_stack.pop()
             result += 1
-                
     return result
-
+    
+            
